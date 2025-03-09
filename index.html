@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webhook Response Listener</title>
+    <script>
+        // Replace this with your actual webhook URL from Make.com
+        const webhookUrl = "https://hook.us1.make.com/33jxfuiqpbdffc61yuwjr41mltvylm72";
+
+        async function fetchWebhookResponse() {
+            try {
+                const response = await fetch(webhookUrl);
+                const data = await response.text();  // Assuming the response is custom HTML
+                document.getElementById("customContent").innerHTML = data;
+            } catch (error) {
+                console.error("Error fetching the webhook response:", error);
+            }
+        }
+
+        // Call the function when the page loads
+        window.onload = fetchWebhookResponse;
+    </script>
+</head>
+<body>
+    <h1>Welcome to the Webhook Listener Page</h1>
+    <div id="customContent">
+        <!-- The custom HTML from the webhook will appear here -->
+    </div>
+</body>
+</html>
